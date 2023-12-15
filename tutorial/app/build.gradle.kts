@@ -15,9 +15,9 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
-publishing{
+publishing {
     publications {
-        create<MavenPublication>("maven"){
+        create<MavenPublication>("maven") {
             groupId = "com.gradle.tutorial"
             artifactId = "tutorial"
             version = "1.0"
@@ -51,7 +51,6 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
-    dependsOn("greet")
 }
 tasks.register("hello") {
     doLast {
@@ -64,4 +63,8 @@ tasks.register("greet") {
         println("How are you?")
     }
     dependsOn("hello")
+}
+
+tasks.named("build") {
+    dependsOn("greet")
 }
