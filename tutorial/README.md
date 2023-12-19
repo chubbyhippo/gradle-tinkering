@@ -1,1 +1,1 @@
-https://docs.gradle.org/current/userguide/part5_gradle_inc_builds.html#part5_begin
+https://docs.gradle.org/current/userguide/part6_gradle_caching.html#part6_begin
