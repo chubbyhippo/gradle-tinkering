@@ -1,7 +1,7 @@
 tasks.register("curl") {
 
     exec {
-        commandLine("curl", "https://gradle.org/")
+        commandLine("sh", "-c", "\"curl --help\"")
         standardOutput = System.out
     }
 }
