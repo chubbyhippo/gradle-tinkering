@@ -2,5 +2,5 @@
 gradle wrapper
 ```
 ```
-gradle curl
+gradle curl -PcurlCommands="-k https://jsonplaceholder.typicode.com/todos/1"
 ```
