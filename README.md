@@ -1,3 +1,6 @@
 ```
 gradle wrapper
 ```
+```
+gradle curl
+```
