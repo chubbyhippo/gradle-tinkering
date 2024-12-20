@@ -9,6 +9,8 @@ tasks.register("sh") {
 }
 
 tasks.register("curl") {
+    description = "Executes a curl command"
+    group = "Custom"
     val curlCommands = project.findProperty("curlCommands") ?: "--help"
     exec {
         commandLine("sh", "-c", "\"curl $curlCommands\"")
