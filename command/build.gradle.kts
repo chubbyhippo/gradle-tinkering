@@ -1,5 +1,4 @@
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import kotlin.system.exitProcess
 
 val commands = project.providers.gradleProperty("commands").get()
 
@@ -9,17 +8,19 @@ tasks.register("sh") {
 
     doLast {
         try {
-            val process = ProcessBuilder("sh", "-c", "\"$commands\"")
+            val process = ProcessBuilder("sh", "-c", commands)
                 .redirectErrorStream(true)
                 .start()
 
-            val reader = BufferedReader(InputStreamReader(process.inputStream))
-            reader.useLines { lines -> lines.forEach { println(it) } }
+            process.inputStream.bufferedReader().useLines { lines ->
+                lines.forEach { println(it) }
+            }
 
             val exitCode = process.waitFor()
             println("Exit code: $exitCode")
         } catch (e: Exception) {
-            e.printStackTrace()
+            println("Error executing command: ${e.localizedMessage}")
+            exitProcess(1)
         }
     }
 }
