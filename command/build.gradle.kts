@@ -6,10 +6,10 @@ tasks.register("sh") {
     group = "Custom"
 
     doLast {
-        val commands = project.findProperty("commands") as String?
+        val commands = project.providers.gradleProperty("commands").get()
         try {
             // Create and start the process
-            val process = ProcessBuilder(*commands!!.split(" ").toTypedArray())
+            val process = ProcessBuilder(*commands.split(" ").toTypedArray())
                 .redirectErrorStream(true) // Redirects error stream to output stream
                 .start()
 
