@@ -1,12 +1,12 @@
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
+val commands = project.providers.gradleProperty("commands").get()
 tasks.register("sh") {
     description = "Executes a shell command"
     group = "Custom"
 
     doLast {
-        val commands = project.providers.gradleProperty("commands").get()
         try {
             // Create and start the process
             val process = ProcessBuilder(*commands.split(" ").toTypedArray())
